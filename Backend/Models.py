@@ -8,6 +8,18 @@ import pandas as pd
 #GroundWaterChange_m is the ground water change in meters.
 #AnimalActivityDuration_h is the length of animal activity in minutes.
 
-data = pd.read_csv("testdata.csv")
+#Seismic Frequencies:
+#High-frequency waves (1–20 Hz): Typically associated with smaller earthquakes and are the first to arrive (P-waves).
+#Intermediate-frequency waves (0.1–1 Hz): Can be associated with moderate to large earthquakes.
+#Low-frequency waves (<0.1 Hz): Generally associated with large to very large earthquakes and can travel long distances.
 
-data.head
+try:
+    data = pd.read_csv("testdata.csv")
+    print(data.head())
+except FileNotFoundError:
+    print("The file 'testdata.csv' does not exist in the current working directory.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+    
+seismicDelta =
+    
