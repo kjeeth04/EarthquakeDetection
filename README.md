@@ -16,3 +16,5 @@ Low-frequency waves (<0.1 Hz): Generally associated with large to very large ear
 Groundwater:
 A high rate of change in the amount of Groundwater is a sign of a potential upcoming earthquake. It can be used to corroborate an assessment that an earthquake may be coming. For the sake of the demo, we have set the rate of change threshold to 1.0 meters. If at or above 1.0, it will count as an additional flag that will support the claim that an earthquake is coming.
 
+Electrical Charge:
+A high rate of change in electromagnetic emissions is a sign of a potential upcoming earthquake. It can be used to corroborate an assessment that an earthquake may be coming. For the sake of the demo, we have set the rate of change to 60 microvolts. If at or above 60, it will count as an additional flag that will support the claim that an earthquake is coming.
