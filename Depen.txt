@@ -1,3 +1,6 @@
 FastAPI / uvicorn
 Pydantic 
-sqlalchemy
+textbelt
+request
+taipy
+pip install scikit-learn
