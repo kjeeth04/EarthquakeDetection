@@ -6,7 +6,7 @@ Return magnatude   alert level , depth
 
 # grab users location and use it to find where they should go
 """
-given episenter location and user location. generate a path bewtween anywhere away from the episener
+given epicenter location and user location. generate a path bewtween anywhere away from the episener
 
 """
 import requests

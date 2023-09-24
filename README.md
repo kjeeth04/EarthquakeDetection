@@ -18,3 +18,8 @@ A high rate of change in the amount of Groundwater is a sign of a potential upco
 
 Electrical Charge:
 A high rate of change in electromagnetic emissions is a sign of a potential upcoming earthquake. It can be used to corroborate an assessment that an earthquake may be coming. For the sake of the demo, we have set the rate of change to 60 microvolts. If at or above 60, it will count as an additional flag that will support the claim that an earthquake is coming.
+
+Animal Behavior:
+“Real-time data measured by the researchers and recorded since December 2019 show what an animal earthquake early warning system could look like: a chip on the collar sends the movement data to a central computer every three minutes. This triggers a warning signal if it registers a significantly increased activity of the animals for at least 45 minutes. The researchers have once received such a warning. “Three hours later, a small quake shook the region,” says Wikelski. “The epicentre was directly below the stables of the animals.””
+(Quote from https://www.mpg.de/15126191/earthquakes-animals)
+Animals have an ability to predict when earthquakes and other natural disasters will occur. While we do not know exactly how they do so, we can notice when they have a heightened sense of activity for a prolonged period of time (Which we have decided to be 45 minutes). Heightened activity for that amount of time is extremely abnormal and thus, can be used to corroborate the claim that an earthquake is coming.

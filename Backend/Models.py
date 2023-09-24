@@ -1,4 +1,5 @@
 import pandas as pd
+import math
 
 def animalValue():
     for datum in df["AnimalActivityDuration_min"]:
@@ -11,23 +12,33 @@ def groundwaterValue():
         if datum >= 1.0:
             return True
     return False
-    
+
 def electricalChargeValue():
     for datum in df["ElectricalChange_uV"]:
         if datum >= 60:
             return True
     return False
 
-
+def calculate_magnitude(reference_amplitude=1):
+    #Finds the highest amplitude to base the magnitude on
+    highestAmplitude = 0
+    for datum in df["SeismicWaveAmplitude_mm"]:
+        if datum > highestAmplitude:
+            highestAmplitude = datum
+            
+    #Converts Amplitude from milimeters to nanometers
+    highestAmplitude *= 1000000
+            
+    return round(math.log10(highestAmplitude / reference_amplitude), 1)
 
 try:
-    data = pd.read_csv("testdata2.csv")
+    df = pd.read_csv("testdata.csv")  # Read CSV file directly into DataFrame
 except FileNotFoundError:
-    print("The file 'testdata.csv' does not exist in the current working directory.")
+    print("The file 'testdata2.csv' does not exist in the current working directory.")  # Correct filename in print statement
+    exit()  # Exit the script if file not found
 except Exception as e:
     print(f"An error occurred: {e}")
-    
-df = pd.DataFrame(data)
+    exit()  # Exit the script if any other exception occurs
 
 #Determines if the city needs to be put on Alert
 onAlert = False
@@ -49,14 +60,16 @@ for datum in df["SeismicFrequency_Hz"]:
 #Determines whether or not to send an alert
 if onAlert:
     if earthquakeSize == "L":
-        #Issue Earthquake Warning Immediatey
-        print("Issue Warning")
+        #Issue Earthquake Warning Immediately, giving Magnitude as well
+        magnitude = calculate_magnitude()
     elif earthquakeSize == "M":
         #Issue Earthquake Warning after getting 1 more additional form of proof
         if (animalValue() or groundwaterValue() or electricalChargeValue()):
-            print("Issue Warning")
+            #Issue Earthquake Warning Immediately, giving Magnitude as well
+            magnitude = calculate_magnitude()
         else:
             print("No warning needed")
+            
     elif earthquakeSize == "S":
         #Issue Earthquake Warning after getting 2 more additional forms of proof
         Counter = 0
@@ -68,7 +81,8 @@ if onAlert:
             Counter += 1
             
         if Counter >= 2:
-            print("Issue Warning")
+            #Issue Earthquake Warning Immediately, giving Magnitude as well
+            magnitude = calculate_magnitude()
         else:
             print("No warning needed")
 else:
