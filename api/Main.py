@@ -1,7 +1,9 @@
 from fastapi import FastAPI , Request
 import uvicorn
 import requests
+from fastapi.staticfiles import StaticFiles
 from mangum import Mangum
+from fastapi.templating import Jinja2Templates
 
 Core = FastAPI()
 
@@ -16,7 +18,15 @@ def Homepage(request:Request):
 def read_root():
     return {"Hello": "World"}
 
-handler = Mangum(Core)
+
+Core.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+@Core.get("/test",)
+async def read_item(request: Request):
+    return templates.TemplateResponse("earthquake_map.html", {"request": request})
+
+
 
 
 if __name__ == "__main__":
