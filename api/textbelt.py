@@ -1,5 +1,6 @@
 import requests
 import datetime
+import Models
 currentTime = datetime.datetime.now()
 realTime = currentTime.strftime("%m/%d/%Y - %H:%M")
 def Sendall(Message:str,Reciver) -> tuple:
@@ -16,15 +17,24 @@ def allCast(message,Numbers: list[int]):
         print(Sendall(message,nums))
     print("casted message to all users")
 
-groupmemebers = ["2159397696","2673562603","6109611239","90852528880"]
+groupmemebers = ["2159397696","2673562603","6109611239"]
+
+alertLevel = None
+if Models.earthquakeSize == "L":
+    alertLevel = "High"
+elif Models.earthquakeSize == "M":
+    alertLevel = "Medium"
+elif Models.earthquakeSize == "S":
+    alertLevel = "Small"
+    
 Mes = f"""
 *Incoming Earthquake Alert**
-Alert Level: Moderate
-Magnitude: 5.2
+Earthquake Strength: {alertLevel}
+Magnitude: {Models.magnitude}
 Location: 30 miles northeast of philadelphia
-Depth: 10 miles
+Depth: {Models.depth} miles
 Time: {realTime}
 
 """
-#print(allCast(Mes,groupmemebers)) workds fine
-#print(allCast())
+print(allCast(Mes,groupmemebers))
+print(allCast())

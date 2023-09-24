@@ -34,7 +34,7 @@ def calculate_magnitude(reference_amplitude=1):
     return round(math.log10(highestAmplitude / reference_amplitude), 1)
 
 try:
-    df = pd.read_csv("testdata.csv")  # Read CSV file directly into DataFrame
+    df = pd.read_csv("testdata2.csv")  # Read CSV file directly into DataFrame
 except FileNotFoundError:
     print("The file 'testdata2.csv' does not exist in the current working directory.")  # Correct filename in print statement
     exit()  # Exit the script if file not found
@@ -67,12 +67,16 @@ if onAlert:
         #Issue Earthquake Warning Immediately, giving magnitude and depth as well
         magnitude = calculate_magnitude()
         depth = random.randint(1, 10)
+        with open("textbelt.py") as f:
+            exec(f.read())
     elif earthquakeSize == "M":
         #Issue Earthquake Warning after getting 1 more additional form of proof
         if (animalValue() or groundwaterValue() or electricalChargeValue()):
             #Issue Earthquake Warning Immediately, giving magnitude and depth as well
             magnitude = calculate_magnitude()
             depth = random.randint(1, 10)
+            with open("textbelt.py") as f:
+                exec(f.read())
         else:
             print("No warning needed")
             
@@ -90,7 +94,8 @@ if onAlert:
             #Issue Earthquake Warning Immediately, giving magnitude and depth as well
             magnitude = calculate_magnitude()
             depth = random.randint(1, 10)
-
+            with open("textbelt.py") as f:
+                exec(f.read())
         else:
             print("No warning needed")
 else:
