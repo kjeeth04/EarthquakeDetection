@@ -1,5 +1,7 @@
 import pandas as pd
 import math
+import random
+random.seed()
 
 def animalValue():
     for datum in df["AnimalActivityDuration_min"]:
@@ -58,15 +60,19 @@ for datum in df["SeismicFrequency_Hz"]:
         earthquakeSize = "S"
 
 #Determines whether or not to send an alert
+magnitude = None
+depth = 0
 if onAlert:
     if earthquakeSize == "L":
-        #Issue Earthquake Warning Immediately, giving Magnitude as well
+        #Issue Earthquake Warning Immediately, giving magnitude and depth as well
         magnitude = calculate_magnitude()
+        depth = random.randint(1, 10)
     elif earthquakeSize == "M":
         #Issue Earthquake Warning after getting 1 more additional form of proof
         if (animalValue() or groundwaterValue() or electricalChargeValue()):
-            #Issue Earthquake Warning Immediately, giving Magnitude as well
+            #Issue Earthquake Warning Immediately, giving magnitude and depth as well
             magnitude = calculate_magnitude()
+            depth = random.randint(1, 10)
         else:
             print("No warning needed")
             
@@ -81,8 +87,10 @@ if onAlert:
             Counter += 1
             
         if Counter >= 2:
-            #Issue Earthquake Warning Immediately, giving Magnitude as well
+            #Issue Earthquake Warning Immediately, giving magnitude and depth as well
             magnitude = calculate_magnitude()
+            depth = random.randint(1, 10)
+
         else:
             print("No warning needed")
 else:
