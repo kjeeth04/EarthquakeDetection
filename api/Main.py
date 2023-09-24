@@ -4,7 +4,7 @@ import requests
 from fastapi.staticfiles import StaticFiles
 from mangum import Mangum
 from fastapi.templating import Jinja2Templates
-
+from Maps import UserGeoData,geolocationRadius, distance
 Core = FastAPI()
 
 #send text message to users
@@ -24,7 +24,9 @@ templates = Jinja2Templates(directory="templates")
 
 @Core.get("/test",)
 async def read_item(request: Request):
-    return templates.TemplateResponse("earthquake_map.html", {"request": request})
+    location = request.client.host
+    dist =UserGeoData(location)
+    return templates.TemplateResponse("earthquake_map.html", {"request": request, "dist":dist})
 
 
 

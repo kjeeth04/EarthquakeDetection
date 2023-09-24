@@ -27,4 +27,3 @@ Time: {realTime}
 
 """
 #print(allCast(Mes,groupmemebers)) workds fine
-#print(allCast())
